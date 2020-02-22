@@ -1,0 +1,82 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+
+void fun(vector<vector<vector<long long>>> yo,long long time)
+{
+    long long count=0;
+    long long clc=time;
+    vector<vector<vector<long long>>>indx;
+    while(clc>0)
+    { 
+        vector<long long>x1;
+        vector<long long>x2;
+        clc=clc-yo[count][0][1]-1;
+        long long eee=0;
+        for(long long c=0;c<clc*yo[count][0][2];c++)
+        {
+            if(c>=(long long)yo[count][1].size()) break;
+            else
+            {
+                eee++;
+                x1.push_back(yo[count][1][c]);
+            }
+        }
+        vector<vector<long long>>tt;
+        tt.push_back(x1);
+        tt.push_back(x2);
+        indx.push_back(tt);
+        count++;
+    }
+    cout<<count<<"\n";
+    for(long long f=0;f<(long long)indx.size();f++)
+    {
+        cout<<indx[f][0][0];
+        cout<<indx[f][0][1]<<"\n";
+        for(long long h=0;h<(long long)indx[f][1].size();h++)
+        {
+            cout<<indx[f][1][h];
+        }
+    }*/
+
+}
+
+int main() {
+   // freopen("input.txt","r",stdin);
+    //freopen("output.txt","w",stdout);
+    //freopen("error.txt","w",stderr);
+    long long  nb,nl,time;
+    cin>>nb>>nl>>time;
+    vector<long long> bookid;
+    vector<vector<vector<long long>>> lib;
+    for(long long i=0;i<nb;i++)
+    {
+        long long flag;
+        cin>>flag;
+        bookid.push_back(flag);
+    }
+    for(long long j=0;j<nl;j++)
+    {
+        long long b,d,bpd;
+        cin>>b>>d>>bpd;
+        vector<vector<long long>> check;
+        vector<long long> v1;
+        vector<long long> v2;
+        v1.push_back(b);
+        v1.push_back(d);
+        v1.push_back(bpd);
+        for(long long k=0;k<b;k++)
+        {
+            long long lol;
+            cin>>lol;
+            v2.push_back(lol);
+        }
+        check.push_back(v1);
+        check.push_back(v2);
+        lib.push_back(check);
+    }
+    fun(lib,time);
+}
+
+
+
